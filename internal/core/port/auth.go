@@ -2,13 +2,13 @@ package port
 
 import (
 	"context"
-	"github/bulutcan99/shipment/internal/core/domain"
+	"github/bulutcan99/shipment/internal/core/domain/session"
 	"time"
 )
 
 type ITokenService interface {
-	CreateToken(user *domain.User, duration time.Duration) (string, error)
-	VerifyToken(token string) (*domain.TokenPayload, error)
+	CreateToken(user *_user.User, duration time.Duration) (string, error)
+	VerifyToken(token string) (*session.TokenPayload, error)
 }
 
 type IAuthService interface {

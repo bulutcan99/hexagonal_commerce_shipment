@@ -1,10 +1,9 @@
-package domain
+package product
 
 import (
 	"time"
 )
 
-// Category is an entity that represents a products category
 type Category struct {
 	ID        uint64    `json:"id"`
 	Name      string    `json:"name"`
