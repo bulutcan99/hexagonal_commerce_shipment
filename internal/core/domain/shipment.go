@@ -1,4 +1,4 @@
-package shipment
+package domain
 
 import (
 	"time"
