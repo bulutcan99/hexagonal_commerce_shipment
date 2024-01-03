@@ -8,26 +8,29 @@ import (
 type ErrorCode int
 
 const (
-	DataNotFound               ErrorCode = iota + 1
-	NoUpdatedData              ErrorCode = iota + 2
-	ConflictingData            ErrorCode = iota + 3
-	InsufficientStock          ErrorCode = iota + 4
-	InsufficientPayment        ErrorCode = iota + 5
-	ExpiredToken               ErrorCode = iota + 6
-	InvalidToken               ErrorCode = iota + 7
-	InvalidCredentials         ErrorCode = iota + 8
-	EmptyAuthorizationHeader   ErrorCode = iota + 9
-	InvalidAuthorizationHeader ErrorCode = iota + 10
-	InvalidAuthorizationType   ErrorCode = iota + 11
-	Unauthorized               ErrorCode = iota + 12
-	Forbidden                  ErrorCode = iota + 13
+	DataNotFound ErrorCode = iota + 1
+	NoUpdatedData
+	ConflictingData
+	InsufficientStock
+	InsufficientPayment
+	ExpiredToken
+	InvalidToken
+	InvalidCredentials
+	EmptyAuthorizationHeader
+	InvalidAuthorizationHeader
+	InvalidAuthorizationType
+	Unauthorized
+	Forbidden
+	ErrInvalidEmail
+	ErrInvalidRole
+	ErrInvalidPassword
 )
 
 // Error struct, hata bilgilerini içerir.
 type Error struct {
 	Err     error
 	Message string
-	Code    int
+	Code    ErrorCode
 	Data    any
 }
 

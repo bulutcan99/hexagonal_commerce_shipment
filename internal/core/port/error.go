@@ -65,7 +65,7 @@ func (ef *ErrorFactory) NewError(code domain.ErrorCode, data interface{}) *domai
 	return &domain.Error{
 		Err:     err,
 		Message: message,
-		Code:    int(code),
+		Code:    code,
 		Data:    data,
 	}
 }
