@@ -3,16 +3,16 @@ package repository
 import (
 	"context"
 	"fmt"
-	"github.com/bulutcan99/shipment/internal/adapter/env"
+	"github.com/bulutcan99/commerce_shipment/pkg/env"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 var (
-	DB_USERNAME = &env.Env.DbUsername
-	DB_PASSWORD = &env.Env.DbPassword
-	DB_HOST     = &env.Env.Host
-	DB_PORT     = &env.Env.DbPort
-	DB_DATABASE = &env.Env.DbName
+	DbUsername = &env.Env.DbUsername
+	DbPass     = &env.Env.DbPassword
+	DbHost     = &env.Env.Host
+	DbPort     = &env.Env.DbPort
+	Database   = &env.Env.DbName
 )
 
 type DB struct {
@@ -20,12 +20,12 @@ type DB struct {
 }
 
 func NewDB(ctx context.Context) (*DB, error) {
-	dsn := fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=disable",
-		*DB_USERNAME,
-		*DB_PASSWORD,
-		*DB_HOST,
-		*DB_PORT,
-		*DB_DATABASE,
+	dsn := fmt.Sprintf("user=%s password=%s host=%s port=%d dbname=%s sslmode=disable",
+		*DbUsername,
+		*DbPass,
+		*DbHost,
+		*DbPort,
+		*Database,
 	)
 
 	db, err := pgxpool.New(ctx, dsn)

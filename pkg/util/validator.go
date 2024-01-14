@@ -1,7 +1,7 @@
 package util
 
 import (
-	"github.com/bulutcan99/shipment/internal/core/domain"
+	"github.com/bulutcan99/commerce_shipment/internal/core/domain"
 	"github.com/oklog/ulid/v2"
 	"reflect"
 	"regexp"

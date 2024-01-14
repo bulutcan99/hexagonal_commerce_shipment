@@ -2,7 +2,7 @@ package port
 
 import (
 	"context"
-	"github/bulutcan99/shipment/internal/core/domain"
+	"github.com/bulutcan99/commerce_shipment/internal/core/domain"
 	"time"
 )
 
