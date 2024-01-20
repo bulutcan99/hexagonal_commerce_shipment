@@ -4,16 +4,8 @@ import (
 	"context"
 	"fmt"
 	"github.com/bulutcan99/commerce_shipment/internal/core/port"
-	"github.com/bulutcan99/commerce_shipment/pkg/env"
 	"github.com/redis/go-redis/v9"
 	"time"
-)
-
-var (
-	Host          = &env.Env.Host
-	RedisServer   = &env.Env.ServerPort
-	RedisPassword = &env.Env.RedisPassword
-	RedisDbNumber = &env.Env.RedisDBNumber
 )
 
 type Redis struct {
