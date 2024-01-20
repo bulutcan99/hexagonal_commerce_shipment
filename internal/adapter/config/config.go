@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/bulutcan99/commerce_shipment/pkg/env"
+	"github.com/bulutcan99/commerce_shipment/internal/adapter/env"
 )
 
 var (
@@ -43,6 +43,7 @@ type (
 		Host     string
 		Port     int
 		Password string
+		DbNumber int
 	}
 
 	PSQL struct {
@@ -80,6 +81,7 @@ func New() *Container {
 		Host:     *Host,
 		Port:     *RedisPort,
 		Password: *RedisPassword,
+		DbNumber: *RedisDBNumber,
 	}
 
 	psql := &PSQL{

@@ -3,6 +3,7 @@ package redis
 import (
 	"context"
 	"fmt"
+	"github.com/bulutcan99/commerce_shipment/internal/adapter/config"
 	"github.com/bulutcan99/commerce_shipment/internal/core/port"
 	"github.com/redis/go-redis/v9"
 	"time"
@@ -12,12 +13,12 @@ type Redis struct {
 	client *redis.Client
 }
 
-func NewRedisCache(ctx context.Context) (port.CacheService, error) {
-	address := fmt.Sprintf("%s:%d", *Host, *RedisServer)
+func NewRedisCache(ctx context.Context, redisConfig *config.Redis) (port.CacheService, error) {
+	address := fmt.Sprintf("%s:%d", redisConfig.Host, redisConfig.Port)
 	client := redis.NewClient(&redis.Options{
 		Addr:     address,
-		Password: *RedisPassword,
-		DB:       *RedisDbNumber,
+		Password: redisConfig.Password,
+		DB:       redisConfig.DbNumber,
 	})
 
 	_, err := client.Ping(ctx).Result()

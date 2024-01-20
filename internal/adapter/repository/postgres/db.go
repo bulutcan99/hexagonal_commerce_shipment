@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 	"fmt"
-	"github.com/bulutcan99/commerce_shipment/pkg/env"
+	"github.com/bulutcan99/commerce_shipment/internal/adapter/env"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 

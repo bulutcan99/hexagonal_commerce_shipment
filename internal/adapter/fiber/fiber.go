@@ -3,7 +3,7 @@ package fiber_go
 import (
 	"context"
 	"fmt"
-	"github.com/bulutcan99/commerce_shipment/pkg/env"
+	"github.com/bulutcan99/commerce_shipment/internal/adapter/env"
 	"github.com/gofiber/fiber/v3"
 	"log"
 )

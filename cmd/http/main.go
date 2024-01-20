@@ -3,10 +3,10 @@ package http
 import (
 	"context"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/cache/redis"
+	"github.com/bulutcan99/commerce_shipment/internal/adapter/env"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/fiber"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/fiber/route"
 	repository "github.com/bulutcan99/commerce_shipment/internal/adapter/repository/postgres"
-	"github.com/bulutcan99/commerce_shipment/pkg/env"
 	"github.com/gofiber/fiber/v3"
 	"log/slog"
 	"os"

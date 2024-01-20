@@ -1,33 +1,30 @@
 package paseto
 
 import (
+	"errors"
+	"github.com/bulutcan99/commerce_shipment/internal/adapter/config"
 	"github.com/bulutcan99/commerce_shipment/internal/core/domain"
 	"github.com/bulutcan99/commerce_shipment/internal/core/port"
+	"github.com/oklog/ulid/v2"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/o1egl/paseto"
 	"golang.org/x/crypto/chacha20poly1305"
 )
 
-/**
- * PasetoToken implements port.TokenService interface
- * and provides an access to the paseto library
- */
 type PasetoToken struct {
 	paseto       *paseto.V2
 	symmetricKey []byte
 	duration     time.Duration
 }
 
-// New creates a new paseto instance
 func New(config *config.Token) (port.ITokenService, error) {
 	symmetricKey := config.SymmetricKey
-	durationStr := config.Duration
+	durationStr := config.TTL
 
 	validSymmetricKey := len(symmetricKey) == chacha20poly1305.KeySize
 	if !validSymmetricKey {
-		return nil, domain.ErrInvalidTokenSymmetricKey
+		return nil, errors.New("invalid token symmetric key")
 	}
 
 	duration, err := time.ParseDuration(durationStr)
@@ -42,12 +39,8 @@ func New(config *config.Token) (port.ITokenService, error) {
 	}, nil
 }
 
-// CreateToken creates a new paseto token
 func (pt *PasetoToken) CreateToken(user *domain.User) (string, error) {
-	id, err := uuid.NewRandom()
-	if err != nil {
-		return "", err
-	}
+	id := ulid.Make()
 
 	payload := domain.TokenPayload{
 		ID:        id,
@@ -63,18 +56,17 @@ func (pt *PasetoToken) CreateToken(user *domain.User) (string, error) {
 
 }
 
-// VerifyToken verifies the paseto token
 func (pt *PasetoToken) VerifyToken(token string) (*domain.TokenPayload, error) {
 	var payload domain.TokenPayload
 
 	err := pt.paseto.Decrypt(token, pt.symmetricKey, &payload, nil)
 	if err != nil {
-		return nil, domain.ErrInvalidToken
+		return nil, errors.New("invalid token")
 	}
 
 	isExpired := time.Now().After(payload.ExpiredAt)
 	if isExpired {
-		return nil, domain.ErrExpiredToken
+		return nil, errors.New("token is expired")
 	}
 
 	return &payload, nil

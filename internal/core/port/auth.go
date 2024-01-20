@@ -3,11 +3,10 @@ package port
 import (
 	"context"
 	"github.com/bulutcan99/commerce_shipment/internal/core/domain"
-	"time"
 )
 
 type ITokenService interface {
-	CreateToken(user *domain.User, duration time.Duration) (string, error)
+	CreateToken(user *domain.User) (string, error)
 	VerifyToken(token string) (*domain.TokenPayload, error)
 }
 

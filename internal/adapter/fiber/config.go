@@ -1,7 +1,7 @@
 package fiber_go
 
 import (
-	"github.com/bulutcan99/commerce_shipment/pkg/env"
+	"github.com/bulutcan99/commerce_shipment/internal/adapter/env"
 	go_json "github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v3"
 	"time"
