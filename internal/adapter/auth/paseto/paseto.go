@@ -15,7 +15,7 @@ import (
 type PasetoToken struct {
 	paseto       *paseto.V2
 	symmetricKey []byte
-	duration     time.Duration
+	TTL          time.Duration
 }
 
 func New(config *config.Token) (port.ITokenService, error) {
@@ -47,7 +47,7 @@ func (pt *PasetoToken) CreateToken(user *domain.User) (string, error) {
 		UserID:    user.ID,
 		Role:      user.Role,
 		IssuedAt:  time.Now(),
-		ExpiredAt: time.Now().Add(pt.duration),
+		ExpiredAt: time.Now().Add(pt.TTL),
 	}
 
 	token, err := pt.paseto.Encrypt(pt.symmetricKey, payload, nil)

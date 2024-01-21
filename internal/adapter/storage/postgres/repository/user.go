@@ -1,10 +1,10 @@
-package query
+package repository
 
 import (
 	"context"
 	"errors"
 	sq "github.com/Masterminds/squirrel"
-	repository "github.com/bulutcan99/commerce_shipment/internal/adapter/repository/postgres"
+	repository "github.com/bulutcan99/commerce_shipment/internal/adapter/storage/postgres"
 	"github.com/bulutcan99/commerce_shipment/internal/core/domain"
 	"github.com/jackc/pgx/v5"
 )
