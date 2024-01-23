@@ -19,7 +19,7 @@ func NewUserRepository(db *repository.DB) *UserRepository {
 	}
 }
 
-func (u *UserRepository) CreateUser(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
+func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
 	query := psql.Insert("users").
 		Columns("name", "surname", "email", "password", "address", "notification_radius", "role").
 		Values(user.Name, user.Surname, user.Email, user.Password, user.Address, user.NotificationRadius, user.Role).
@@ -56,7 +56,7 @@ func (u *UserRepository) CreateUser(ctx context.Context, user *domain.User) (*do
 	return user, nil
 }
 
-func (u *UserRepository) GetUserByID(ctx context.Context, id uint64) (*domain.User, *domain.Error) {
+func (u *UserRepository) GetByID(ctx context.Context, id uint64) (*domain.User, *domain.Error) {
 	var user domain.User
 
 	query := psql.Select("*").
@@ -101,7 +101,7 @@ func (u *UserRepository) GetUserByID(ctx context.Context, id uint64) (*domain.Us
 	return &user, nil
 }
 
-func (u *UserRepository) GetUserByEmail(ctx context.Context, email string) (*domain.User, *domain.Error) {
+func (u *UserRepository) GetByEmail(ctx context.Context, email string) (*domain.User, *domain.Error) {
 	var user domain.User
 
 	query := psql.Select("email", "password").
@@ -138,7 +138,7 @@ func (u *UserRepository) GetUserByEmail(ctx context.Context, email string) (*dom
 	return &user, nil
 }
 
-func (u *UserRepository) GetUsers(ctx context.Context) ([]domain.User, *domain.Error) {
+func (u *UserRepository) GetAll(ctx context.Context) ([]domain.User, *domain.Error) {
 	var user domain.User
 	var users []domain.User
 
@@ -192,7 +192,7 @@ func (u *UserRepository) GetUsers(ctx context.Context) ([]domain.User, *domain.E
 	return users, nil
 }
 
-func (u *UserRepository) GetUsersWithLimit(ctx context.Context, skip, limit uint64) ([]domain.User, *domain.Error) {
+func (u *UserRepository) GetAllWithLimit(ctx context.Context, skip, limit uint64) ([]domain.User, *domain.Error) {
 	var user domain.User
 	var users []domain.User
 
@@ -243,7 +243,7 @@ func (u *UserRepository) GetUsersWithLimit(ctx context.Context, skip, limit uint
 	return users, nil
 }
 
-func (u *UserRepository) UpdateUser(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
+func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
 	name := nullString(user.Name)
 	surname := nullString(user.Surname)
 	email := nullString(user.Email)
@@ -294,7 +294,7 @@ func (u *UserRepository) UpdateUser(ctx context.Context, user *domain.User) (*do
 	return user, nil
 }
 
-func (u *UserRepository) DeleteUser(ctx context.Context, id uint64) *domain.Error {
+func (u *UserRepository) Delete(ctx context.Context, id uint64) *domain.Error {
 	query := psql.Delete("users").
 		Where(sq.Eq{"id": id})
 

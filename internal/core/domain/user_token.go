@@ -6,9 +6,9 @@ import (
 )
 
 type TokenPayload struct {
-	ID        ulid.ULID `json:"id"`
-	UserID    uint64    `json:"user_id"`
-	Role      string    `json:"role"`
-	IssuedAt  time.Time `json:"issued_at"`
-	ExpiredAt time.Time `json:"expired_at"`
+	ID        ulid.ULID
+	UserID    uint64
+	Role      string
+	IssuedAt  time.Time
+	ExpiredAt time.Time
 }

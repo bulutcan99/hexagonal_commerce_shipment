@@ -1,2 +1,12 @@
-CREATE TABLE "users"
-
+CREATE TABLE "users" (
+		"id" BIGSERIAL PRIMARY KEY,
+		"name" varchar NOT NULL,
+		"surname" varchar NOT NULL,
+		"address" varchar NOT NULL,
+		"notification_radius" int NOT NULL,
+		"email" varchar NOT NULL,
+		"password" varchar NOT NULL,
+		"role" varchar NOT NULL DEFAULT 'customer',
+		"created_at" timestamptz NOT NULL DEFAULT (now()),
+		"updated_at" timestamptz NOT NULL DEFAULT (now())
+);

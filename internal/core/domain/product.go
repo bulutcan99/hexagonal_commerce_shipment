@@ -6,13 +6,13 @@ import (
 )
 
 type Product struct {
-	ID         uint64    `json:"id"`
-	CategoryID uint64    `json:"category_id"`
-	SKU        ulid.ULID `json:"sku"` // Sku means Stock Keeping Unit
-	Name       string    `json:"name"`
-	Stock      int64     `json:"stock"`
-	Price      float64   `json:"price"`
-	CreatedAt  time.Time `json:"created_at"`
-	UpdatedAt  time.Time `json:"updated_at"`
-	Category   *Category `json:"category"`
+	ID         uint64
+	CategoryID uint64
+	SKU        ulid.ULID
+	Name       string
+	Stock      int64
+	Price      float64
+	CreatedAt  time.Time
+	UpdatedAt  time.Time
+	Category   *Category
 }

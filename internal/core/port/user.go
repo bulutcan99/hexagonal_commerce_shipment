@@ -6,19 +6,20 @@ import (
 )
 
 type IUserRepository interface {
-	CreateUser(ctx context.Context, user *domain.User) (*domain.User, error)
-	GetUserByID(ctx context.Context, id uint64) (*domain.User, error)
-	GetUserByEmail(ctx context.Context, email string) (*domain.User, error)
-	ListUsers(ctx context.Context, skip, limit uint64) ([]domain.User, error)
-	UpdateUser(ctx context.Context, user *domain.User) (*domain.User, error)
-	DeleteUser(ctx context.Context, id uint64) error
+	Insert(ctx context.Context, user *domain.User) (*domain.User, *domain.Error)
+	GetByID(ctx context.Context, id uint64) (*domain.User, *domain.Error)
+	GetByEmail(ctx context.Context, email string) (*domain.User, *domain.Error)
+	GetAll(ctx context.Context) ([]domain.User, *domain.Error)
+	GetAllWithLimit(ctx context.Context, skip, limit uint64) ([]domain.User, *domain.Error)
+	Update(ctx context.Context, user *domain.User) (*domain.User, *domain.Error)
+	Delete(ctx context.Context, id uint64) *domain.Error
 }
 
 type IUserService interface {
 	Register(ctx context.Context, user *domain.User) (*domain.User, error)
-	GetUserById(ctx context.Context, id uint64) (*domain.User, error)
-	GetUserByEmail(ctx context.Context, email string) (*domain.User, error)
+	GetByID(ctx context.Context, id uint64) (*domain.User, error)
+	GetByEmail(ctx context.Context, email string) (*domain.User, error)
 	ListUsers(ctx context.Context, skip, limit uint64) ([]domain.User, error)
-	UpdateUser(ctx context.Context, user *domain.User) (*domain.User, error)
-	DeleteUser(ctx context.Context, id uint64) error
+	Update(ctx context.Context, user *domain.User) (*domain.User, error)
+	Delete(ctx context.Context, id uint64) error
 }
