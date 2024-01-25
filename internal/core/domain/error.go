@@ -9,6 +9,7 @@ const (
 	InsufficientStock
 	InsufficientPayment
 	ExpiredToken
+	PasswordHashing
 	InvalidToken
 	InvalidCredentials
 	EmptyAuthorizationHeader
@@ -16,6 +17,9 @@ const (
 	InvalidAuthorizationType
 	Unauthorized
 	Forbidden
+	CacheSerialization
+	CacheSet
+	CacheDelete
 	ErrInvalidEmail
 	ErrInvalidRole
 	ErrInvalidPassword
