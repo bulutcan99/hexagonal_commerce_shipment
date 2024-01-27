@@ -1,3 +1,5 @@
+CREATE TYPE "users_role_enum" AS ENUM ('admin', 'customer');
+
 CREATE TABLE "users" (
 		"id" BIGSERIAL PRIMARY KEY,
 		"name" varchar NOT NULL,
@@ -10,3 +12,6 @@ CREATE TABLE "users" (
 		"created_at" timestamptz NOT NULL DEFAULT (now()),
 		"updated_at" timestamptz NOT NULL DEFAULT (now())
 );
+
+CREATE UNIQUE INDEX "email" ON "users" ("email");
+```

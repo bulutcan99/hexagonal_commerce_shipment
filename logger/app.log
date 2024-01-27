@@ -1,0 +1,26 @@
+{"time":"2024-01-27T22:19:48.64433+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-27T22:19:48.645337+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-27T22:19:48.650952+03:00","level":"ERROR","msg":"Error connecting to database"}
+{"time":"2024-01-27T23:16:30.176409+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-27T23:16:30.178198+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-27T23:16:30.195138+03:00","level":"ERROR","msg":"Error connecting to database"}
+{"time":"2024-01-27T23:18:41.814611+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-27T23:18:41.815403+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-27T23:18:41.832964+03:00","level":"INFO","msg":"Database connected:","!BADKEY":5432}
+{"time":"2024-01-27T23:18:41.833188+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-27T23:23:28.247373+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-27T23:23:28.248207+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-27T23:23:28.273894+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-27T23:23:28.274005+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-27T23:29:53.368522+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-27T23:29:53.369526+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-27T23:29:53.395443+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-27T23:29:53.39553+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-27T23:30:44.632715+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-27T23:30:44.633419+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-27T23:30:44.648614+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-27T23:30:44.648708+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-27T23:32:28.686003+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-27T23:32:28.686775+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-27T23:32:28.701021+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-27T23:32:28.701107+03:00","level":"ERROR","msg":"Error migrating database"}

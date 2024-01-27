@@ -1,7 +1,6 @@
 package env
 
 import (
-	"errors"
 	"fmt"
 	"github.com/caarlos0/env"
 	"github.com/joho/godotenv"
@@ -23,7 +22,6 @@ type ENV struct {
 	RedisPort         int    `env:"REDIS_PORT,required"`
 	RedisPassword     string `env:"REDIS_PASSWORD,required"`
 	RedisDBNumber     int    `env:"REDIS_DB_NUMBER,required"`
-	LogLevel          string `env:"LOG_LEVEL,required"`
 }
 
 var doOnce sync.Once
@@ -32,8 +30,9 @@ var Env ENV
 func ParseEnv() *ENV {
 	doOnce.Do(func() {
 		err := godotenv.Load()
+		fmt.Println("ERRR")
 		if err != nil {
-			errors.New("error loading .env file")
+			fmt.Printf("error loading .env file: %v", err)
 			os.Exit(0)
 		}
 		if err := env.Parse(&Env); err != nil {

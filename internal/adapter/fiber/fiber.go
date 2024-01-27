@@ -6,6 +6,7 @@ import (
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/env"
 	"github.com/gofiber/fiber/v3"
 	"log"
+	"log/slog"
 )
 
 var (
@@ -21,7 +22,7 @@ func FiberListen(ctx context.Context, a *fiber.App) {
 		if err := a.Shutdown(); err != nil {
 			log.Printf("Oops... Server is not shutting down! Reason: %v", err)
 		}
-
+		slog.Info("Server is shutting down...")
 		close(idleConnsClosed)
 	}()
 

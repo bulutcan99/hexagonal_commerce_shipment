@@ -20,9 +20,9 @@ func NewUserRepository(db *repository.DB) *UserRepository {
 }
 
 func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
-	query := psql.Insert("users").
-		Columns("name", "surname", "email", "password", "address", "notification_radius", "role").
-		Values(user.Name, user.Surname, user.Email, user.Password, user.Address, user.NotificationRadius, user.Role).
+	query := u.db.QueryBuilder.Insert("users").
+		Columns("name", "surname", "email", "password", "address", "notification_radius").
+		Values(user.Name, user.Surname, user.Email, user.Password, user.Address, user.NotificationRadius).
 		Suffix("RETURNING *")
 
 	sql, args, err := query.ToSql()
@@ -59,7 +59,7 @@ func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain
 func (u *UserRepository) GetByID(ctx context.Context, id uint64) (*domain.User, *domain.Error) {
 	var user domain.User
 
-	query := psql.Select("*").
+	query := u.db.QueryBuilder.Select("*").
 		From("users").
 		Where(sq.Eq{"id": id}).
 		Limit(1)
@@ -104,7 +104,7 @@ func (u *UserRepository) GetByID(ctx context.Context, id uint64) (*domain.User, 
 func (u *UserRepository) GetByEmail(ctx context.Context, email string) (*domain.User, *domain.Error) {
 	var user domain.User
 
-	query := psql.Select("email", "password").
+	query := u.db.QueryBuilder.Select("email", "password").
 		From("users").
 		Where(sq.Eq{"email": email}).
 		Limit(1)
@@ -142,7 +142,7 @@ func (u *UserRepository) GetAll(ctx context.Context) ([]domain.User, *domain.Err
 	var user domain.User
 	var users []domain.User
 
-	query := psql.Select("*").
+	query := u.db.QueryBuilder.Select("*").
 		From("users").
 		OrderBy("id")
 
@@ -196,7 +196,7 @@ func (u *UserRepository) GetAllWithLimit(ctx context.Context, skip, limit uint64
 	var user domain.User
 	var users []domain.User
 
-	query := psql.Select("*").
+	query := u.db.QueryBuilder.Select("*").
 		From("users").
 		OrderBy("id").
 		Limit(limit).
@@ -248,11 +248,11 @@ func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain
 	surname := nullString(user.Surname)
 	email := nullString(user.Email)
 	password := nullString(user.Password)
-	role := nullString(user.Role)
+	role := nullString(string(user.Role))
 	address := nullString(user.Address)
 	notificationRadius := nullUint64(user.NotificationRadius)
 
-	query := psql.Update("users").
+	query := u.db.QueryBuilder.Update("users").
 		Set("name", sq.Expr("COALESCE(?, name)", name)).
 		Set("surname", sq.Expr("COALESCE(?, surname)", surname)).
 		Set("email", sq.Expr("COALESCE(?, email)", email)).
@@ -295,7 +295,7 @@ func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain
 }
 
 func (u *UserRepository) Delete(ctx context.Context, id uint64) *domain.Error {
-	query := psql.Delete("users").
+	query := u.db.QueryBuilder.Delete("users").
 		Where(sq.Eq{"id": id})
 
 	sql, args, err := query.ToSql()

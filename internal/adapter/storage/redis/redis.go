@@ -13,7 +13,7 @@ type Redis struct {
 	client *redis.Client
 }
 
-func NewRedisCache(ctx context.Context, redisConfig *config.Redis) (port.CacheService, error) {
+func NewRedisCache(ctx context.Context, redisConfig *config.Redis) (port.ICacheRepository, error) {
 	address := fmt.Sprintf("%s:%d", redisConfig.Host, redisConfig.Port)
 	client := redis.NewClient(&redis.Options{
 		Addr:     address,

@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github.com/bulutcan99/commerce_shipment/internal/adapter/http/controller"
 	"github.com/gofiber/fiber/v3"
 )
 

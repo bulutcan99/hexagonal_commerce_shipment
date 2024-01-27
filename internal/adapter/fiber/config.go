@@ -11,7 +11,7 @@ var READ_TIMEOUT_SECONDS_COUNT = &env.Env.ServerReadTimeout
 
 func ConfigFiber() fiber.Config {
 	return fiber.Config{
-		ReadTimeout:   time.Second * time.Duration(*READ_TIMEOUT_SECONDS_COUNT),
+		ReadTimeout:   time.Minute * time.Duration(*READ_TIMEOUT_SECONDS_COUNT),
 		StrictRouting: false,
 		CaseSensitive: false,
 		BodyLimit:     16 * 1024 * 1024,

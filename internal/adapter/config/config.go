@@ -17,7 +17,6 @@ var (
 	RedisPort      = &env.Env.RedisPort
 	RedisPassword  = &env.Env.RedisPassword
 	RedisDBNumber  = &env.Env.RedisDBNumber
-	LogLevel       = &env.Env.LogLevel
 )
 
 type (

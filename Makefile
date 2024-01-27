@@ -5,7 +5,6 @@ BUILD_DIR = $(PWD)/build
 MIGRATIONS_FOLDER = $(PWD)/infrastructure/pkg/sql
 DATABASE_URL=postgresql://myuser:password@localhost:5432/postgres?sslmode=disable
 
-
 clean:
 	rm -rf ./build
 
@@ -25,18 +24,20 @@ docker.run: docker.postgres docker.redis docker.kafka migrate.up
 
 docker.postgres:
 	docker run --rm -d \
-		--name cgapp-postgres\
-		-e POSTGRES_USER=myuser\
-		-e POSTGRES_PASSWORD=pass\
-		-e POSTGRES_DB=postgres\
+		--name my_postgres_container\
+		-e POSTGRES_USER=user\
+		-e POSTGRES_PASSWORD=password\
+		-e POSTGRES_DB=db\
 		-p 5432:5432\
 		postgres
 
 docker.redis:
 	docker run --rm -d \
-		--name cgapp-redis \
-		-p 6379:6379 \
-		redis
+		--name my_redis_container \
+          -e REDIS_PASSWORD=password \
+          -e REDIS_DB=0 \
+          -p 6379:6379 \
+          redis
 
 docker.kafka:
 	docker run --rm -d \

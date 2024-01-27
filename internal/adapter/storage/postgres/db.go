@@ -9,11 +9,10 @@ import (
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/config"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/source/iofs"
-
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-//go:embed migration/*.sql
+//go:embed migrations/*.sql
 var migrationsFS embed.FS
 
 type DB struct {
@@ -31,7 +30,6 @@ func NewDB(ctx context.Context, Psql *config.PSQL) (*DB, error) {
 		Psql.Port,
 		Psql.Name,
 	)
-
 	db, err := pgxpool.New(ctx, url)
 	if err != nil {
 		return nil, err
@@ -51,21 +49,21 @@ func NewDB(ctx context.Context, Psql *config.PSQL) (*DB, error) {
 }
 
 func (db *DB) Migrate() error {
-	source, err := iofs.New(migrationsFS, "migration")
+	source, err := iofs.New(migrationsFS, "migrations")
 	if err != nil {
 		return err
 	}
-
+	fmt.Println("1", db.url)
 	migration, err := migrate.NewWithSourceInstance("iofs", source, db.url)
 	if err != nil {
 		return err
 	}
-
+	fmt.Println("2")
 	err = migration.Up()
 	if err != nil && !errors.Is(err, migrate.ErrNoChange) {
 		return err
 	}
-
+	fmt.Println("3")
 	return nil
 }
 
