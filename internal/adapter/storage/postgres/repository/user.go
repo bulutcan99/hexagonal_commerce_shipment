@@ -44,7 +44,7 @@ func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain
 		&user.Password,
 		&user.Address,
 		&user.NotificationRadius,
-		&user.Role,
+		&user.Permissions,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 	)
@@ -83,7 +83,7 @@ func (u *UserRepository) GetByID(ctx context.Context, id uint64) (*domain.User, 
 		&user.Password,
 		&user.Address,
 		&user.NotificationRadius,
-		&user.Role,
+		&user.Permissions,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 	)
@@ -180,7 +180,7 @@ func (u *UserRepository) GetAll(ctx context.Context) ([]domain.User, *domain.Err
 			&user.Password,
 			&user.Address,
 			&user.NotificationRadius,
-			&user.Role,
+			&user.Permissions,
 			&user.CreatedAt,
 			&user.UpdatedAt,
 		)
@@ -230,7 +230,7 @@ func (u *UserRepository) GetAllWithLimit(ctx context.Context, skip, limit uint64
 			&user.Password,
 			&user.Address,
 			&user.NotificationRadius,
-			&user.Role,
+			&user.Permissions,
 			&user.CreatedAt,
 			&user.UpdatedAt,
 		)
@@ -251,7 +251,6 @@ func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain
 	surname := nullString(user.Surname)
 	email := nullString(user.Email)
 	password := nullString(user.Password)
-	role := nullString(string(user.Role))
 	address := nullString(user.Address)
 	notificationRadius := nullUint64(user.NotificationRadius)
 
@@ -259,7 +258,7 @@ func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain
 		Set("name", sq.Expr("COALESCE(?, name)", name)).
 		Set("surname", sq.Expr("COALESCE(?, surname)", surname)).
 		Set("email", sq.Expr("COALESCE(?, email)", email)).
-		Set("role", sq.Expr("COALESCE(?, role)", role)).
+		Set("Permissions", sq.Expr("COALESCE(?, Permissions)", user.Permissions)).
 		Set("password", sq.Expr("COALESCE(?, password)", password)).
 		Set("address", sq.Expr("COALESCE(?, address)", address)).
 		Set("notification_radius", sq.Expr("COALESCE(?, notification_radius)", notificationRadius)).
@@ -282,7 +281,7 @@ func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain
 		&user.Password,
 		&user.Address,
 		&user.NotificationRadius,
-		&user.Role,
+		&user.Permissions,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 	)

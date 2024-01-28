@@ -29,6 +29,7 @@ func (u *UserService) Register(ctx context.Context, user *domain.User) (*domain.
 		}
 	}
 	user.Password = hashedPassword
+	user.Permissions = make([]domain.Permission, 0)
 	insertUser, errInsert := u.repo.Insert(ctx, user)
 	if errInsert != nil {
 		return nil, &domain.Error{

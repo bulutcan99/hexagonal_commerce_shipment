@@ -12,7 +12,14 @@ type User struct {
 	Password           string
 	Address            string
 	NotificationRadius uint64
-	Role               string
+	Permissions        []Permission
 	CreatedAt          time.Time
 	UpdatedAt          time.Time
+}
+
+type Permission struct {
+	ID        uint64
+	Entry     int
+	AddFlag   bool
+	AdminFlag bool
 }

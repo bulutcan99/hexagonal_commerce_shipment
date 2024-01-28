@@ -148,3 +148,23 @@
 {"time":"2024-01-28T20:41:34.946697+03:00","level":"INFO","msg":"Fiber initialized"}
 {"time":"2024-01-28T20:41:34.946962+03:00","level":"INFO","msg":"Fiber middleware initialized"}
 {"time":"2024-01-28T20:42:20.304607+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-29T00:07:47.673803+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-29T00:07:47.674501+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-29T00:07:47.694267+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-29T00:07:47.745517+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-29T00:08:49.335019+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-29T00:08:49.335695+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-29T00:08:49.345416+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-29T00:08:49.365511+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-29T00:08:49.370108+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-29T00:08:49.370167+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-29T00:08:49.370259+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-29T00:11:31.628181+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-29T00:14:39.984683+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-29T00:14:39.985339+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-29T00:14:39.999938+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-29T00:14:40.01863+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-29T00:14:40.021027+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-29T00:14:40.021068+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-29T00:14:40.021143+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-29T00:14:55.695875+03:00","level":"INFO","msg":"Server is shutting down..."}

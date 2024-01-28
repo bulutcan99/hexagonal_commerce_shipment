@@ -1,14 +1,26 @@
-CREATE TABLE "users" (
-		"id" BIGSERIAL PRIMARY KEY,
-		"name" varchar NOT NULL,
-		"surname" varchar NOT NULL,
-		"address" varchar NOT NULL,
-		"notification_radius" smallint NOT NULL DEFAULT 300,
-		"email" varchar NOT NULL,
-		"password" varchar NOT NULL,
-		"role" varchar NOT NULL,
-		"created_at" timestamptz NOT NULL DEFAULT (now()),
-		"updated_at" timestamptz NOT NULL DEFAULT (now())
+SET TIME ZONE 'Europe/Istanbul';
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    surname VARCHAR(20) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    notification_radius INTEGER,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 CREATE UNIQUE INDEX "email" ON "users" ("email");
+
+CREATE TABLE IF NOT EXISTS permissions (
+    id SERIAL PRIMARY KEY,
+    entry INTEGER NOT NULL,
+    add_flag BOOLEAN NOT NULL,
+    admin_flag BOOLEAN NOT NULL,
+    user_id INTEGER REFERENCES users(id)
+);
+
+ALTER TABLE users
+ADD COLUMN permission_id INTEGER REFERENCES permissions(id);
