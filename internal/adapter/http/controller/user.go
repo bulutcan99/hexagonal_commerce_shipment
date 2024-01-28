@@ -50,7 +50,7 @@ func (u *UserController) Register(c fiber.Ctx) error {
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": true,
-			"msg":   "error while trying to register user",
+			"msg":   "error while trying to register user: " + err.Message,
 		})
 	}
 	slog.Info("User Registered Successfully! User:", userData)

@@ -1,9 +1,10 @@
 .PHONY: clean critic security lint test build run
 
-APP_NAME = shipment
+APP_NAME = commerce-shipment
 BUILD_DIR = $(PWD)/build
-MIGRATIONS_FOLDER = $(PWD)/infrastructure/pkg/sql
-DATABASE_URL=postgresql://myuser:password@localhost:5432/postgres?sslmode=disable
+MIGRATIONS_FOLDER = $(PWD)/internal/adapter/storage/postgres/migrations
+DATABASE_URL=postgres://user:password@localhost:5432/db?sslmode=disable
+VERSION=1
 
 clean:
 	rm -rf ./build
@@ -18,7 +19,7 @@ migrate.down:
 	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" down
 
 migrate.force:
-	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" force $(version)
+	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" force $(VERSION)
 
 docker.run: docker.postgres docker.redis docker.kafka migrate.up
 

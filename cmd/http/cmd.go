@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"context"
-	"fmt"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/config"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/env"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/fiber"
@@ -25,15 +24,12 @@ var (
 )
 
 func Init() {
-	fmt.Println("S")
 	Env = env.ParseEnv()
-	fmt.Println("SA")
 	logger.Set()
 }
 
 func Run() {
 	Init()
-	fmt.Println("Starting the application")
 	slog.Info("Starting server...")
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
@@ -64,7 +60,7 @@ func Run() {
 	userRepo := repository.NewUserRepository(db)
 	userService := service.NewUserService(userRepo, cache)
 	userHandler := controller.NewUserController(userService)
-	slog.Info("Redis connected:", config.RedisPort)
+	slog.Info("Redis connected!")
 	cfgFiber := fiber_go.ConfigFiber()
 	app := fiber.New(cfgFiber)
 	slog.Info("Fiber initialized")

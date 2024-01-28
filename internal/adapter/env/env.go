@@ -30,7 +30,6 @@ var Env ENV
 func ParseEnv() *ENV {
 	doOnce.Do(func() {
 		err := godotenv.Load()
-		fmt.Println("ERRR")
 		if err != nil {
 			fmt.Printf("error loading .env file: %v", err)
 			os.Exit(0)

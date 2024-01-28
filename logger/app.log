@@ -24,3 +24,127 @@
 {"time":"2024-01-27T23:32:28.686775+03:00","level":"INFO","msg":"Config initialized"}
 {"time":"2024-01-27T23:32:28.701021+03:00","level":"INFO","msg":"Database connected!"}
 {"time":"2024-01-27T23:32:28.701107+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-27T23:39:10.303491+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-27T23:39:10.304214+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-27T23:39:10.325257+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-27T23:39:10.325372+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-28T16:22:50.432921+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T16:22:50.433816+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T16:22:50.456026+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T16:22:50.488199+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-28T16:25:28.247822+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T16:25:28.248454+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T16:25:28.257834+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T16:25:28.27577+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-28T16:40:39.738275+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T16:40:39.739321+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T16:40:39.753926+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T16:40:39.771695+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T16:40:39.776864+03:00","level":"INFO","msg":"Redis connected:","!BADKEY":6379}
+{"time":"2024-01-28T16:40:39.776982+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T16:40:39.777084+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T16:50:38.696332+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T16:50:42.02482+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T16:50:42.025287+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T16:50:42.036199+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T16:50:42.059832+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T16:50:42.064641+03:00","level":"INFO","msg":"Redis connected:","!BADKEY":6379}
+{"time":"2024-01-28T16:50:42.064749+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T16:50:42.064829+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T16:50:59.875483+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T16:51:03.286194+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T16:51:03.28661+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T16:51:03.299692+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T16:51:03.315111+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T16:51:03.317993+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T16:51:03.318043+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T16:51:03.318139+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T16:53:11.130834+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T16:53:13.534918+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T16:53:13.535466+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T16:53:13.546645+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T16:53:13.566393+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T16:53:13.569467+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T16:53:13.569514+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T16:53:13.5696+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T16:53:33.956107+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T16:53:35.522892+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T16:53:35.523424+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T16:53:35.534469+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T16:53:35.553184+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T16:53:35.555891+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T16:53:35.555953+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T16:53:35.556097+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T16:53:39.405284+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T16:54:03.989195+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T16:54:03.989818+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T16:54:03.997861+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T16:54:03.998608+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-28T17:11:35.976192+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T17:11:35.976766+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T17:11:35.985576+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T17:11:36.014448+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-28T17:12:04.965343+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T17:12:04.965875+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T17:12:04.977043+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T17:12:04.997835+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T17:12:05.001001+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T17:12:05.001035+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T17:12:05.001107+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T17:12:37.051443+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T17:18:44.228075+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T17:18:44.22876+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T17:18:44.240618+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T17:18:44.287291+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T17:18:44.290531+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T17:18:44.290602+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T17:18:44.290707+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T20:21:07.39032+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T20:27:32.869055+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T20:27:32.870257+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T20:27:32.886279+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T20:27:32.936396+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T20:27:32.939106+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T20:27:32.939178+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T20:27:32.939252+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T20:31:34.956511+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T20:31:37.350105+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T20:31:37.350548+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T20:31:37.367543+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T20:31:37.392404+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T20:31:37.396179+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T20:31:37.396217+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T20:31:37.396311+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T20:32:48.805949+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T20:32:50.941236+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T20:32:50.941907+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T20:32:50.958594+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T20:32:50.985121+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T20:32:50.990422+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T20:32:50.990481+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T20:32:50.990576+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T20:35:19.288973+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T20:35:36.263586+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T20:35:36.264482+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T20:35:36.283936+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T20:35:36.315418+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-28T20:35:57.679562+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T20:35:57.680365+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T20:35:57.691026+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T20:35:57.71061+03:00","level":"ERROR","msg":"Error migrating database"}
+{"time":"2024-01-28T20:40:43.074428+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T20:40:43.075198+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T20:40:43.088355+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T20:40:43.108506+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T20:40:43.112032+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T20:40:43.112076+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T20:40:43.112173+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T20:41:14.445486+03:00","level":"INFO","msg":"Server is shutting down..."}
+{"time":"2024-01-28T20:41:34.91045+03:00","level":"INFO","msg":"Starting server..."}
+{"time":"2024-01-28T20:41:34.911351+03:00","level":"INFO","msg":"Config initialized"}
+{"time":"2024-01-28T20:41:34.925124+03:00","level":"INFO","msg":"Database connected!"}
+{"time":"2024-01-28T20:41:34.943624+03:00","level":"INFO","msg":"Database migrated"}
+{"time":"2024-01-28T20:41:34.946627+03:00","level":"INFO","msg":"Redis connected!"}
+{"time":"2024-01-28T20:41:34.946697+03:00","level":"INFO","msg":"Fiber initialized"}
+{"time":"2024-01-28T20:41:34.946962+03:00","level":"INFO","msg":"Fiber middleware initialized"}
+{"time":"2024-01-28T20:42:20.304607+03:00","level":"INFO","msg":"Server is shutting down..."}

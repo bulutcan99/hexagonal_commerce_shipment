@@ -3,9 +3,11 @@ package repository
 import (
 	"context"
 	"errors"
+	"fmt"
 	sq "github.com/Masterminds/squirrel"
 	repository "github.com/bulutcan99/commerce_shipment/internal/adapter/storage/postgres"
 	"github.com/bulutcan99/commerce_shipment/internal/core/domain"
+	"github.com/goccy/go-json"
 	"github.com/jackc/pgx/v5"
 )
 
@@ -24,7 +26,8 @@ func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain
 		Columns("name", "surname", "email", "password", "address", "notification_radius").
 		Values(user.Name, user.Surname, user.Email, user.Password, user.Address, user.NotificationRadius).
 		Suffix("RETURNING *")
-
+	userJson, _ := json.Marshal(user)
+	fmt.Println("USER JSON", string(userJson))
 	sql, args, err := query.ToSql()
 	if err != nil {
 		return nil, &domain.Error{

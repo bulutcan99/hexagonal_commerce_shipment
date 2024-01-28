@@ -8,6 +8,7 @@ import (
 	"github.com/Masterminds/squirrel"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/config"
 	"github.com/golang-migrate/migrate/v4"
+	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	"github.com/golang-migrate/migrate/v4/source/iofs"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -53,17 +54,16 @@ func (db *DB) Migrate() error {
 	if err != nil {
 		return err
 	}
-	fmt.Println("1", db.url)
 	migration, err := migrate.NewWithSourceInstance("iofs", source, db.url)
 	if err != nil {
 		return err
 	}
-	fmt.Println("2")
 	err = migration.Up()
 	if err != nil && !errors.Is(err, migrate.ErrNoChange) {
 		return err
+	} else {
+
 	}
-	fmt.Println("3")
 	return nil
 }
 
