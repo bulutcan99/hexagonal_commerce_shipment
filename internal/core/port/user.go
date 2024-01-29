@@ -17,7 +17,7 @@ type IUserRepository interface {
 
 type IUserService interface {
 	Register(ctx context.Context, user *domain.User) (*domain.User, *domain.Error)
-	// GetByID(ctx context.Context, id uint64) (*domain.User, error)
+	GetByID(ctx context.Context, id uint64) (*domain.User, error)
 	// GetByEmail(ctx context.Context, email string) (*domain.User, error)
 	// ListUsers(ctx context.Context, skip, limit uint64) ([]domain.User, error)
 	// Update(ctx context.Context, user *domain.User) (*domain.User, error)

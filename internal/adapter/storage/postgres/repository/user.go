@@ -44,7 +44,6 @@ func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain
 		&user.Password,
 		&user.Address,
 		&user.NotificationRadius,
-		&user.Permissions,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 	)
@@ -83,7 +82,6 @@ func (u *UserRepository) GetByID(ctx context.Context, id uint64) (*domain.User, 
 		&user.Password,
 		&user.Address,
 		&user.NotificationRadius,
-		&user.Permissions,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 	)
@@ -180,7 +178,6 @@ func (u *UserRepository) GetAll(ctx context.Context) ([]domain.User, *domain.Err
 			&user.Password,
 			&user.Address,
 			&user.NotificationRadius,
-			&user.Permissions,
 			&user.CreatedAt,
 			&user.UpdatedAt,
 		)
@@ -230,7 +227,6 @@ func (u *UserRepository) GetAllWithLimit(ctx context.Context, skip, limit uint64
 			&user.Password,
 			&user.Address,
 			&user.NotificationRadius,
-			&user.Permissions,
 			&user.CreatedAt,
 			&user.UpdatedAt,
 		)
@@ -258,7 +254,6 @@ func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain
 		Set("name", sq.Expr("COALESCE(?, name)", name)).
 		Set("surname", sq.Expr("COALESCE(?, surname)", surname)).
 		Set("email", sq.Expr("COALESCE(?, email)", email)).
-		Set("Permissions", sq.Expr("COALESCE(?, Permissions)", user.Permissions)).
 		Set("password", sq.Expr("COALESCE(?, password)", password)).
 		Set("address", sq.Expr("COALESCE(?, address)", address)).
 		Set("notification_radius", sq.Expr("COALESCE(?, notification_radius)", notificationRadius)).
@@ -281,7 +276,6 @@ func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain
 		&user.Password,
 		&user.Address,
 		&user.NotificationRadius,
-		&user.Permissions,
 		&user.CreatedAt,
 		&user.UpdatedAt,
 	)
