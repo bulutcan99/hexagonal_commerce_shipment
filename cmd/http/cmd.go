@@ -60,6 +60,11 @@ func Run() {
 	userRepo := repository.NewUserRepository(db)
 	userService := service.NewUserService(userRepo, cache)
 	userHandler := controller.NewUserController(userService)
+
+	permissionRepo := repository.NewPermissionRepository(db)
+	permissionService := service.NewPermissionService(permissionRepo, cache)
+	permissionHandler := controller.NewPermissionController(permissionService, userService)
+
 	slog.Info("Redis connected!")
 	cfgFiber := fiber_go.ConfigFiber()
 	app := fiber.New(cfgFiber)
@@ -67,5 +72,6 @@ func Run() {
 	fiber_go.MiddlewareFiber(app)
 	slog.Info("Fiber middleware initialized")
 	router.UserRoute(app, userHandler)
+	router.PermissionRoute(app, permissionHandler)
 	fiber_go.FiberListen(ctx, app)
 }

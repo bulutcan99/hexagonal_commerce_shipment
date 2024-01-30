@@ -5,7 +5,7 @@ import (
 	"github.com/gofiber/fiber/v3"
 )
 
-func PermissionRoute(r fiber.Router, user *controller.UserController) {
-	route := r.Group("/v1/users")
-	route.Post("/register", user.Register)
+func PermissionRoute(r fiber.Router, permission *controller.PermissionController) {
+	route := r.Group("/v1/permissions")
+	route.Post("/register/:user_id", permission.AddPermission)
 }

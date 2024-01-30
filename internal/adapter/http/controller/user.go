@@ -24,7 +24,7 @@ type registerUserReqBody struct {
 	Email              string `json:"email" binding:"required,email"`
 	Password           string `json:"password" binding:"required,min=8"`
 	Address            string `json:"address" binding:"required"`
-	NotificationRadius uint64 `json:"notification_radius" binding:"required"`
+	NotificationRadius uint64 `json:"notification_radius"`
 }
 
 func (u *UserController) Register(c fiber.Ctx) error {
@@ -54,5 +54,9 @@ func (u *UserController) Register(c fiber.Ctx) error {
 		})
 	}
 	slog.Info("User Registered Successfully! User:", userData)
-	return nil
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"error": false,
+		"msg":   "user registered successfully",
+		"data":  userData,
+	})
 }

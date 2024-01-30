@@ -31,6 +31,7 @@ func NewDB(ctx context.Context, Psql *config.PSQL) (*DB, error) {
 		Psql.Port,
 		Psql.Name,
 	)
+
 	db, err := pgxpool.New(ctx, url)
 	if err != nil {
 		return nil, err

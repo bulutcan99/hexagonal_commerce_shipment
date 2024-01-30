@@ -6,7 +6,6 @@ import (
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v3"
 	"log/slog"
-	"strconv"
 	"time"
 )
 
@@ -29,16 +28,13 @@ type permissionReqBody struct {
 }
 
 func (u *PermissionController) AddPermission(c fiber.Ctx) error {
-	userId := c.Params("user_id")
-	userIdInt, err := strconv.Atoi(userId)
+	userId, err := c.ParamsInt("user_id")
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": true,
-			"msg":   "user id must be a number",
+			"msg":   "user id must be a number: " + err.Error(),
 		})
 	}
-
-	userData := u.userService.
 	var reqBody permissionReqBody
 	body := c.Body()
 	if err := json.Unmarshal(body, &reqBody); err != nil {
@@ -56,7 +52,7 @@ func (u *PermissionController) AddPermission(c fiber.Ctx) error {
 		UpdatedAt: time.Now(),
 	}
 
-	permission, permissionErr := u.permissionService.AssignPermission(c.Context(), &permissionData, uint64(userIdInt))
+	permission, permissionErr := u.permissionService.AssignPermission(c.Context(), &permissionData, uint64(userId))
 	if permissionErr != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": true,
@@ -64,7 +60,6 @@ func (u *PermissionController) AddPermission(c fiber.Ctx) error {
 			"data":  err.Error(),
 		})
 	}
-
 	slog.Info("Permission Assigned Successfully! Permission:", permission)
 	return nil
 }
