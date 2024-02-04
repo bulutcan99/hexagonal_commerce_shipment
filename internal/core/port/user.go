@@ -6,7 +6,7 @@ import (
 )
 
 type IUserRepository interface {
-	Insert(ctx context.Context, user *domain.User) (*domain.User, *domain.Error)
+	Insert(ctx context.Context, user *domain.User, permission *domain.Permission) (*domain.User, *domain.Error)
 	GetByID(ctx context.Context, id uint64) (*domain.User, *domain.Error)
 	GetByEmail(ctx context.Context, email string) (*domain.User, *domain.Error)
 	GetAll(ctx context.Context) ([]domain.User, *domain.Error)

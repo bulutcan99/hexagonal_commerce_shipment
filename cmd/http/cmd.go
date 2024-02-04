@@ -56,13 +56,13 @@ func Run() {
 		panic(err)
 	}
 	defer cache.Close()
-
 	userRepo := repository.NewUserRepository(db)
-	userService := service.NewUserService(userRepo, cache)
-	userHandler := controller.NewUserController(userService)
-
 	permissionRepo := repository.NewPermissionRepository(db)
+
+	userService := service.NewUserService(userRepo, permissionRepo, cache)
 	permissionService := service.NewPermissionService(permissionRepo, cache)
+
+	userHandler := controller.NewUserController(userService)
 	permissionHandler := controller.NewPermissionController(permissionService, userService)
 
 	slog.Info("Redis connected!")

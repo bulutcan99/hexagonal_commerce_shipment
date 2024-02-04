@@ -1,12 +1,7 @@
 package controller
 
 import (
-	"github.com/bulutcan99/commerce_shipment/internal/core/domain"
 	"github.com/bulutcan99/commerce_shipment/internal/core/port"
-	"github.com/goccy/go-json"
-	"github.com/gofiber/fiber/v3"
-	"log/slog"
-	"time"
 )
 
 type PermissionController struct {
@@ -27,39 +22,4 @@ type permissionReqBody struct {
 	AdminFlag bool `json:"admin_flag" binding:"required"`
 }
 
-func (u *PermissionController) AddPermission(c fiber.Ctx) error {
-	userId, err := c.ParamsInt("user_id")
-	if err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": true,
-			"msg":   "user id must be a number: " + err.Error(),
-		})
-	}
-	var reqBody permissionReqBody
-	body := c.Body()
-	if err := json.Unmarshal(body, &reqBody); err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": true,
-			"msg":   "error while trying to parse body",
-		})
-	}
-
-	permissionData := domain.Permission{
-		Entry:     reqBody.Entry,
-		AddFlag:   reqBody.AddFlag,
-		AdminFlag: reqBody.AdminFlag,
-		CreatedAt: time.Now(),
-		UpdatedAt: time.Now(),
-	}
-
-	permission, permissionErr := u.permissionService.AssignPermission(c.Context(), &permissionData, uint64(userId))
-	if permissionErr != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"error": true,
-			"msg":   "error while trying to assign permission",
-			"data":  err.Error(),
-		})
-	}
-	slog.Info("Permission Assigned Successfully! Permission:", permission)
-	return nil
-}
+// func (u *PermissionController) UpdatePermission(c fiber.Ctx) error

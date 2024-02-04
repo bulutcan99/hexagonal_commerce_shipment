@@ -19,10 +19,10 @@ func NewUserRepository(db *repository.DB) *UserRepository {
 	}
 }
 
-func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
+func (u *UserRepository) Insert(ctx context.Context, user *domain.User, permission *domain.Permission) (*domain.User, *domain.Error) {
 	query := u.db.QueryBuilder.Insert("users").
-		Columns("name", "surname", "email", "password", "address", "notification_radius").
-		Values(user.Name, user.Surname, user.Email, user.Password, user.Address, user.NotificationRadius).
+		Columns("permission_id", "name", "surname", "email", "password", "address", "notification_radius").
+		Values(permission.ID, user.Name, user.Surname, user.Email, user.Password, user.Address, user.NotificationRadius).
 		Suffix("RETURNING *")
 	sql, args, err := query.ToSql()
 	if err != nil {
@@ -34,6 +34,7 @@ func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain
 
 	err = u.db.QueryRow(ctx, sql, args...).Scan(
 		&user.ID,
+		&permission.ID,
 		&user.Name,
 		&user.Surname,
 		&user.Email,
@@ -51,6 +52,7 @@ func (u *UserRepository) Insert(ctx context.Context, user *domain.User) (*domain
 		}
 	}
 
+	user.Permission = *permission
 	return user, nil
 }
 

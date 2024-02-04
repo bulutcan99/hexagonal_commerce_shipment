@@ -13,10 +13,10 @@ build:
 	CGO_ENABLED=0 go build -ldflags="-w -s" -o $(BUILD_DIR)/$(APP_NAME) main.go
 
 migrate.up:
-	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" up
+	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" -verbose up
 
 migrate.down:
-	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" down
+	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" -verbose down
 
 migrate.force:
 	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" force $(VERSION)

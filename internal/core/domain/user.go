@@ -12,7 +12,7 @@ type User struct {
 	Password           string
 	Address            string
 	NotificationRadius uint64
-	Permissions        []Permission
+	Permission         Permission
 	CreatedAt          time.Time
 	UpdatedAt          time.Time
 }

@@ -8,18 +8,37 @@ import (
 )
 
 type UserService struct {
-	repo  port.IUserRepository
-	cache port.ICacheRepository
+	userRepo port.IUserRepository
+	permRepo port.IPermissionRepository
+	cache    port.ICacheRepository
 }
 
-func NewUserService(repo port.IUserRepository, cache port.ICacheRepository) *UserService {
+func NewUserService(userRepo port.IUserRepository, permRepo port.IPermissionRepository, cache port.ICacheRepository) *UserService {
 	return &UserService{
-		repo,
+		userRepo,
+		permRepo,
 		cache,
 	}
 }
 
 func (u *UserService) Register(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
+	defaultPermission := domain.Permission{
+		Entry:      1,
+		AddFlag:    true,
+		RemoveFlag: false,
+		AdminFlag:  false,
+	}
+
+	insertPermission, errInsert := u.permRepo.Insert(ctx, &defaultPermission)
+
+	if errInsert != nil {
+		return nil, &domain.Error{
+			Code:    errInsert.Code,
+			Message: errInsert.Message,
+			Data:    insertPermission.ID,
+		}
+	}
+
 	hashedPassword, err := util.HashPassword(user.Password)
 	if err != nil {
 		return nil, &domain.Error{
@@ -29,7 +48,7 @@ func (u *UserService) Register(ctx context.Context, user *domain.User) (*domain.
 		}
 	}
 	user.Password = hashedPassword
-	insertUser, errInsert := u.repo.Insert(ctx, user)
+	insertUser, errInsert := u.userRepo.Insert(ctx, user, insertPermission)
 	if errInsert != nil {
 		return nil, &domain.Error{
 			Code:    errInsert.Code,
@@ -55,6 +74,18 @@ func (u *UserService) Register(ctx context.Context, user *domain.User) (*domain.
 			Data:    cachingKey,
 		}
 	}
+
+	permissionKey := util.GenerateCacheKeyParams("user", "permission", insertPermission.ID)
+	permissionSerialized, err := util.Serialize(insertPermission)
+	if err != nil {
+		return nil, &domain.Error{
+			Code:    domain.CacheSerialization,
+			Message: err.Error(),
+			Data:    permissionSerialized,
+		}
+	}
+
+	err = u.cache.Set(ctx, permissionKey, permissionSerialized, 0)
 	err = u.cache.DeleteByPrefix(ctx, "users:*") // delete all users cache because of new one
 	if err != nil {
 		return nil, &domain.Error{
