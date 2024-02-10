@@ -24,7 +24,7 @@ migrate.force:
 docker.build:
 	docker build -t $(APP_NAME) .
 
-docker.run: docker.postgres docker.redis docker.kafka migrate.up
+docker.run: docker.postgres docker.redis
 
 docker.postgres:
 	docker run --rm -d \

@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	paseto_token "github.com/bulutcan99/commerce_shipment/internal/adapter/auth/paseto"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/config"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/env"
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/fiber"
@@ -56,13 +57,22 @@ func Run() {
 		panic(err)
 	}
 	defer cache.Close()
+
+	tokenService, err := paseto_token.New(cfg.Token)
+	if err != nil {
+		slog.Error("Error initializing token service")
+		panic(err)
+	}
+
 	userRepo := repository.NewUserRepository(db)
 	permissionRepo := repository.NewPermissionRepository(db)
 
+	authService := service.NewAuthService(userRepo, permissionRepo, cache, tokenService)
 	userService := service.NewUserService(userRepo, permissionRepo, cache)
 	permissionService := service.NewPermissionService(permissionRepo, cache)
 
-	userHandler := controller.NewUserController(userService)
+	authController := controller.NewAuthController(authService)
+	// userHandler := controller.NewUserController(userService)
 	permissionHandler := controller.NewPermissionController(permissionService, userService)
 
 	slog.Info("Redis connected!")
@@ -71,7 +81,7 @@ func Run() {
 	slog.Info("Fiber initialized")
 	fiber_go.MiddlewareFiber(app)
 	slog.Info("Fiber middleware initialized")
-	router.UserRoute(app, userHandler)
+	router.AuthRoute(app, authController)
 	router.PermissionRoute(app, permissionHandler)
 	fiber_go.FiberListen(ctx, app)
 }

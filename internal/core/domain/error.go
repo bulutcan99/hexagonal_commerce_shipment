@@ -12,6 +12,9 @@ const (
 	PasswordHashing
 	InvalidToken
 	InvalidCredentials
+	TokenCreation
+	TokenVerification
+	TokenExpired
 	EmptyAuthorizationHeader
 	InvalidAuthorizationHeader
 	InvalidAuthorizationType

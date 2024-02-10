@@ -1,4 +1,4 @@
-package paseto
+package paseto_token
 
 import (
 	"errors"
@@ -39,10 +39,13 @@ func New(config *config.Token) (port.ITokenService, error) {
 	}, nil
 }
 
-func (pt *PasetoToken) CreateToken(user *domain.User) (*string, error) {
+func (pt *PasetoToken) CreateToken(user *domain.User) (string, *domain.Error) {
 	id, err := uuid.NewRandom()
 	if err != nil {
-		return nil, errors.New("error creating token")
+		return "", &domain.Error{
+			Code:    domain.TokenCreation,
+			Message: "Token creation failed",
+		}
 	}
 
 	payload := domain.TokenPayload{
@@ -55,21 +58,27 @@ func (pt *PasetoToken) CreateToken(user *domain.User) (*string, error) {
 
 	token, err := pt.paseto.Encrypt(pt.symmetricKey, payload, nil)
 
-	return &token, err
+	return token, nil
 
 }
 
-func (pt *PasetoToken) VerifyToken(token string) (*domain.TokenPayload, error) {
+func (pt *PasetoToken) VerifyToken(token string) (*domain.TokenPayload, *domain.Error) {
 	var payload domain.TokenPayload
 
 	err := pt.paseto.Decrypt(token, pt.symmetricKey, &payload, nil)
 	if err != nil {
-		return nil, errors.New("invalid token")
+		return nil, &domain.Error{
+			Code:    domain.TokenVerification,
+			Message: "Token verification failed",
+		}
 	}
 
 	isExpired := time.Now().After(payload.ExpiredAt)
 	if isExpired {
-		return nil, errors.New("token is expired")
+		return nil, &domain.Error{
+			Code:    domain.TokenExpired,
+			Message: "Token expired",
+		}
 	}
 
 	return &payload, nil

@@ -6,10 +6,12 @@ import (
 )
 
 type ITokenService interface {
-	CreateToken(user *domain.User) (*string, error)
-	VerifyToken(token string) (*domain.TokenPayload, error)
+	CreateToken(user *domain.User) (string, *domain.Error)
+	VerifyToken(token string) (*domain.TokenPayload, *domain.Error)
 }
 
 type IAuthService interface {
-	Login(ctx context.Context, email, password string) (string, error)
+	Register(ctx context.Context, user *domain.User) (*domain.User, *domain.Error)
+	
+	Login(ctx context.Context, email, password string) (string, *domain.Error)
 }

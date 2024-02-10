@@ -5,7 +5,8 @@ import (
 	"github.com/gofiber/fiber/v3"
 )
 
-func UserRoute(r fiber.Router, user *controller.UserController) {
-	route := r.Group("/v1/users")
-	route.Post("/register", user.Register)
+func AuthRoute(r fiber.Router, auth *controller.AuthController) {
+	route := r.Group("/v1")
+	route.Post("/register", auth.Register)
+	route.Post("/login", auth.Login)
 }
