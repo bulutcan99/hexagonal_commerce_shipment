@@ -6,7 +6,7 @@ import (
 )
 
 type ITokenService interface {
-	CreateToken(user *domain.User) (string, error)
+	CreateToken(user *domain.User) (*string, error)
 	VerifyToken(token string) (*domain.TokenPayload, error)
 }
 

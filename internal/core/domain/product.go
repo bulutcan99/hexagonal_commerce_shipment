@@ -1,14 +1,14 @@
 package domain
 
 import (
-	"github.com/oklog/ulid/v2"
+	"github.com/google/uuid"
 	"time"
 )
 
 type Product struct {
 	ID         uint64
 	CategoryID uint64
-	SKU        ulid.ULID
+	SKU        uuid.UUID
 	Name       string
 	Stock      int64
 	Price      float64

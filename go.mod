@@ -1,18 +1,18 @@
 module github.com/bulutcan99/commerce_shipment
 
-go 1.21.3
+go 1.22
 
 require (
 	github.com/Masterminds/squirrel v1.5.4
 	github.com/caarlos0/env v3.5.0+incompatible
 	github.com/goccy/go-json v0.10.2
-	github.com/gofiber/fiber/v3 v3.0.0-20240113152607-1588b6b60210
+	github.com/gofiber/fiber/v3 v3.0.0-20240210003237-70067a17547c
 	github.com/golang-migrate/migrate/v4 v4.17.0
-	github.com/jackc/pgx/v5 v5.5.2
+	github.com/google/uuid v1.6.0
+	github.com/jackc/pgx/v5 v5.5.3
 	github.com/joho/godotenv v1.5.1
 	github.com/o1egl/paseto v1.0.0
-	github.com/oklog/ulid/v2 v2.1.0
-	github.com/redis/go-redis/v9 v9.3.1
+	github.com/redis/go-redis/v9 v9.4.0
 	github.com/samber/slog-multi v1.0.2
 	golang.org/x/crypto v0.17.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
@@ -26,7 +26,6 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.3 // indirect
-	github.com/google/uuid v1.5.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect

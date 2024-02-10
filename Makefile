@@ -21,6 +21,9 @@ migrate.down:
 migrate.force:
 	migrate -path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" force $(VERSION)
 
+docker.build:
+	docker build -t $(APP_NAME) .
+
 docker.run: docker.postgres docker.redis docker.kafka migrate.up
 
 docker.postgres:

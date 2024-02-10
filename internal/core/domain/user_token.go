@@ -1,14 +1,14 @@
 package domain
 
 import (
-	"github.com/oklog/ulid/v2"
+	"github.com/google/uuid"
 	"time"
 )
 
 type TokenPayload struct {
-	ID        ulid.ULID
-	UserID    uint64
-	Role      string
-	IssuedAt  time.Time
-	ExpiredAt time.Time
+	ID           uuid.UUID
+	UserId       uint64
+	PermissionId uint64
+	IssuedAt     time.Time
+	ExpiredAt    time.Time
 }

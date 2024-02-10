@@ -5,7 +5,7 @@ import (
 	"github.com/bulutcan99/commerce_shipment/internal/adapter/config"
 	"github.com/bulutcan99/commerce_shipment/internal/core/domain"
 	"github.com/bulutcan99/commerce_shipment/internal/core/port"
-	"github.com/oklog/ulid/v2"
+	"github.com/google/uuid"
 	"time"
 
 	"github.com/o1egl/paseto"
@@ -39,20 +39,23 @@ func New(config *config.Token) (port.ITokenService, error) {
 	}, nil
 }
 
-func (pt *PasetoToken) CreateToken(user *domain.User) (string, error) {
-	id := ulid.Make()
+func (pt *PasetoToken) CreateToken(user *domain.User) (*string, error) {
+	id, err := uuid.NewRandom()
+	if err != nil {
+		return nil, errors.New("error creating token")
+	}
 
 	payload := domain.TokenPayload{
-		ID:        id,
-		UserID:    user.ID,
-		Role:      user.Role,
-		IssuedAt:  time.Now(),
-		ExpiredAt: time.Now().Add(pt.TTL),
+		ID:           id,
+		UserId:       user.ID,
+		PermissionId: user.Permission.ID,
+		IssuedAt:     time.Now(),
+		ExpiredAt:    time.Now().Add(pt.TTL),
 	}
 
 	token, err := pt.paseto.Encrypt(pt.symmetricKey, payload, nil)
 
-	return token, err
+	return &token, err
 
 }
 
