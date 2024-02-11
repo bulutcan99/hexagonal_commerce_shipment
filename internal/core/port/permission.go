@@ -6,7 +6,7 @@ import (
 )
 
 type IPermissionRepository interface {
-	Insert(ctx context.Context, permission *domain.Permission) (*domain.Permission, *domain.Error)
+	AddPermission(ctx context.Context, permission *domain.Permission) (*domain.Permission, *domain.Error)
 	// Update(ctx context.Context, permission *domain.Permission) (*domain.Permission, *domain.Error)
 }
 

@@ -31,7 +31,7 @@ func (as *AuthService) Register(ctx context.Context, user *domain.User) (*domain
 		AdminFlag:  false,
 	}
 
-	insertPermission, errInsert := as.permRepo.Insert(ctx, &defaultPermission)
+	insertPermission, errInsert := as.permRepo.AddPermission(ctx, &defaultPermission)
 
 	if errInsert != nil {
 		return nil, &domain.Error{
@@ -50,7 +50,7 @@ func (as *AuthService) Register(ctx context.Context, user *domain.User) (*domain
 		}
 	}
 	user.Password = hashedPassword
-	insertUser, errInsert := as.userRepo.Insert(ctx, user, insertPermission)
+	insertUser, errInsert := as.userRepo.AddUser(ctx, user, insertPermission)
 	if errInsert != nil {
 		return nil, &domain.Error{
 			Code:    errInsert.Code,
@@ -100,7 +100,7 @@ func (as *AuthService) Register(ctx context.Context, user *domain.User) (*domain
 }
 
 func (as *AuthService) Login(ctx context.Context, email, password string) (string, *domain.Error) {
-	user, err := as.userRepo.GetByEmail(ctx, email)
+	user, err := as.userRepo.GetUserByEmail(ctx, email)
 	if err != nil {
 		return "", &domain.Error{
 			Code:    domain.InvalidCredentials,

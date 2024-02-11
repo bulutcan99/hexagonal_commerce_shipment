@@ -19,7 +19,7 @@ func NewUserRepository(db *repository.DB) *UserRepository {
 	}
 }
 
-func (u *UserRepository) Insert(ctx context.Context, user *domain.User, permission *domain.Permission) (*domain.User, *domain.Error) {
+func (u *UserRepository) AddUser(ctx context.Context, user *domain.User, permission *domain.Permission) (*domain.User, *domain.Error) {
 	query := u.db.QueryBuilder.Insert("users").
 		Columns("permission_id", "name", "surname", "email", "password", "address", "notification_radius").
 		Values(permission.ID, user.Name, user.Surname, user.Email, user.Password, user.Address, user.NotificationRadius).
@@ -52,11 +52,11 @@ func (u *UserRepository) Insert(ctx context.Context, user *domain.User, permissi
 		}
 	}
 
-	user.Permission = *permission
+	user.PermissionId = permission.ID
 	return user, nil
 }
 
-func (u *UserRepository) GetByID(ctx context.Context, id uint64) (*domain.User, *domain.Error) {
+func (u *UserRepository) GetUserByID(ctx context.Context, id uint64) (*domain.User, *domain.Error) {
 	var user domain.User
 
 	query := u.db.QueryBuilder.Select("*").
@@ -100,7 +100,7 @@ func (u *UserRepository) GetByID(ctx context.Context, id uint64) (*domain.User, 
 	return &user, nil
 }
 
-func (u *UserRepository) GetByEmail(ctx context.Context, email string) (*domain.User, *domain.Error) {
+func (u *UserRepository) GetUserByEmail(ctx context.Context, email string) (*domain.User, *domain.Error) {
 	var user domain.User
 
 	query := u.db.QueryBuilder.Select("email", "password").
@@ -137,7 +137,7 @@ func (u *UserRepository) GetByEmail(ctx context.Context, email string) (*domain.
 	return &user, nil
 }
 
-func (u *UserRepository) GetAll(ctx context.Context) ([]domain.User, *domain.Error) {
+func (u *UserRepository) GetAllUsers(ctx context.Context) ([]domain.User, *domain.Error) {
 	var user domain.User
 	var users []domain.User
 
@@ -170,10 +170,10 @@ func (u *UserRepository) GetAll(ctx context.Context) ([]domain.User, *domain.Err
 	for rows.Next() {
 		err = rows.Scan(
 			&user.ID,
+			&user.PermissionId,
 			&user.Name,
 			&user.Surname,
 			&user.Email,
-			&user.Password,
 			&user.Address,
 			&user.NotificationRadius,
 			&user.CreatedAt,
@@ -190,7 +190,7 @@ func (u *UserRepository) GetAll(ctx context.Context) ([]domain.User, *domain.Err
 	return users, nil
 }
 
-func (u *UserRepository) GetAllWithLimit(ctx context.Context, skip, limit uint64) ([]domain.User, *domain.Error) {
+func (u *UserRepository) GetAllUsersWithLimit(ctx context.Context, skip, limit uint64) ([]domain.User, *domain.Error) {
 	var user domain.User
 	var users []domain.User
 
@@ -240,7 +240,7 @@ func (u *UserRepository) GetAllWithLimit(ctx context.Context, skip, limit uint64
 	return users, nil
 }
 
-func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
+func (u *UserRepository) UpdateUser(ctx context.Context, user *domain.User) (*domain.User, *domain.Error) {
 	name := nullString(user.Name)
 	surname := nullString(user.Surname)
 	email := nullString(user.Email)
@@ -288,7 +288,7 @@ func (u *UserRepository) Update(ctx context.Context, user *domain.User) (*domain
 	return user, nil
 }
 
-func (u *UserRepository) Delete(ctx context.Context, id uint64) *domain.Error {
+func (u *UserRepository) DeleteUser(ctx context.Context, id uint64) *domain.Error {
 	query := u.db.QueryBuilder.Delete("users").
 		Where(sq.Eq{"id": id})
 

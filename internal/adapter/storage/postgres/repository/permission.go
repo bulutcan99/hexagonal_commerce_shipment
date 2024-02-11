@@ -16,7 +16,7 @@ func NewPermissionRepository(db *repository.DB) *PermissionRepository {
 	}
 }
 
-func (p *PermissionRepository) Insert(ctx context.Context, permission *domain.Permission) (*domain.Permission, *domain.Error) {
+func (p *PermissionRepository) AddPermission(ctx context.Context, permission *domain.Permission) (*domain.Permission, *domain.Error) {
 	query := p.db.QueryBuilder.Insert("permissions").
 		Columns("entry", "add_flag", "remove_flag", "admin_flag").
 		Values(permission.Entry, permission.AddFlag, permission.RemoveFlag, permission.AdminFlag).

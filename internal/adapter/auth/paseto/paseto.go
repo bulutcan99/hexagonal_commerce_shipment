@@ -51,7 +51,7 @@ func (pt *PasetoToken) CreateToken(user *domain.User) (string, *domain.Error) {
 	payload := domain.TokenPayload{
 		ID:           id,
 		UserId:       user.ID,
-		PermissionId: user.Permission.ID,
+		PermissionId: user.PermissionId,
 		IssuedAt:     time.Now(),
 		ExpiredAt:    time.Now().Add(pt.TTL),
 	}

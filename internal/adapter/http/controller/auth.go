@@ -6,6 +6,7 @@ import (
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v3"
 	"log/slog"
+	"time"
 )
 
 type AuthController struct {
@@ -84,6 +85,12 @@ func (a *AuthController) Login(c fiber.Ctx) error {
 			"msg":   "error while trying to login: " + err.Message,
 		})
 	}
+
+	c.Cookie(&fiber.Cookie{
+		Name:    "token",
+		Value:   token,
+		Expires: time.Now().Add(24 * time.Hour),
+	})
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"error": false,

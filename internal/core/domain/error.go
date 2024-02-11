@@ -20,6 +20,7 @@ const (
 	InvalidAuthorizationType
 	Unauthorized
 	Forbidden
+	CacheNotFound
 	CacheSerialization
 	CacheSet
 	CacheDelete

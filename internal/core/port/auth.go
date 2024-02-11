@@ -12,6 +12,5 @@ type ITokenService interface {
 
 type IAuthService interface {
 	Register(ctx context.Context, user *domain.User) (*domain.User, *domain.Error)
-	
 	Login(ctx context.Context, email, password string) (string, *domain.Error)
 }
