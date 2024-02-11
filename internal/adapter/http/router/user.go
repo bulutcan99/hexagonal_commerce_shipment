@@ -10,4 +10,7 @@ import (
 func UserRoute(r fiber.Router, token port.ITokenService, user *controller.UserController) {
 	route := r.Group("/v1/user").Use(fiber_go.AuthMiddleware(token))
 	route.Get("/get-users", user.GetAllUsers)
+	route.Get("/get-users-limit", user.GetUsersLimit)
+	route.Get("/get-user/:id", user.GetUser)
+	route.Get("/get-user-self", user.GetUserSelfInfo)
 }
